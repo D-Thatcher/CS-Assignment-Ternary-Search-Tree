@@ -139,7 +139,7 @@ void doFirstProcess(struct Node * root)
     // To avoid corrupting the output file, we need to lock the threads
     pthread_mutex_lock(&lock);
 
-    static const char writeFile[] = "C:\\Users\\DanLa\\CLionProjects\\untitled1\\matches.txt";
+    static const char writeFile[] = "matches.txt";
 
     FILE * matchFile = fopen(writeFile,"w+");
     if ( matchFile == NULL )
@@ -148,7 +148,7 @@ void doFirstProcess(struct Node * root)
 
 
 
-    static const char allwordsFileName[] = "C:\\Users\\DanLa\\CLionProjects\\untitled1\\allwords.txt";
+    static const char allwordsFileName[] = "allwords.txt";
     FILE *allwordsFile = fopen ( allwordsFileName, "r" );
     int startLine = 0;
     if ( allwordsFile != NULL )
@@ -255,7 +255,7 @@ void doSecondProcess(struct Node * root)
     pthread_mutex_lock(&lock);
 
 
-    static const char writeFile[] = "C:\\Users\\DanLa\\CLionProjects\\untitled1\\matches.txt";
+    static const char writeFile[] = "matches.txt";
 
     FILE * matchFile = fopen(writeFile,"a+");
     if ( matchFile == NULL )
@@ -264,7 +264,7 @@ void doSecondProcess(struct Node * root)
 
 
 
-    static const char allwordsFileName[] = "C:\\Users\\DanLa\\CLionProjects\\untitled1\\allwords.txt";
+    static const char allwordsFileName[] = "allwords.txt";
     FILE *allwordsFile = fopen ( allwordsFileName, "r" );
     int startLine = 0;
     if ( allwordsFile != NULL )
@@ -370,7 +370,7 @@ int main(){
     // Build the shared Ternary Search Tree
     struct Node *root = NULL;
 
-    static const char filename[] = "C:\\Users\\DanLa\\CLionProjects\\untitled1\\commonwords.txt";
+    static const char filename[] = "commonwords.txt";
     FILE *file = fopen ( filename, "r" );
     if ( file != NULL )
     {
