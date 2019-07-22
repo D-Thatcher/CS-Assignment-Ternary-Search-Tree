@@ -138,9 +138,8 @@ void doFirstProcess(struct Node * root)
 {
     // To avoid corrupting the output file, we need to lock the threads
     pthread_mutex_lock(&lock);
-    
-    // Open a file for writing the matches
-    static const char writeFile[] = "matches.txt";
+
+    static const char writeFile[] = "C:\\Users\\DanLa\\CLionProjects\\untitled1\\matches.txt";
 
     FILE * matchFile = fopen(writeFile,"w+");
     if ( matchFile == NULL )
@@ -148,8 +147,8 @@ void doFirstProcess(struct Node * root)
 
 
 
-    // Open the allwords file
-    static const char allwordsFileName[] = "allwords.txt";
+
+    static const char allwordsFileName[] = "C:\\Users\\DanLa\\CLionProjects\\untitled1\\allwords.txt";
     FILE *allwordsFile = fopen ( allwordsFileName, "r" );
     int startLine = 0;
     if ( allwordsFile != NULL )
@@ -158,18 +157,16 @@ void doFirstProcess(struct Node * root)
         while (( fgets ( line, sizeof line, allwordsFile ) != NULL )&& startLine < 150000) /* read a line */
         {
             startLine++;
-            
             // Remove new-line delimiter
             line[strcspn(line, "\n")] = 0;
-        
-            // Store a string of matching common words delimited by commas. This is no longer used as it the substrings must be sorted after
+
+            // Store a string of matching common words delimited by commas
             char matchingWords[2000];
             strcpy(matchingWords, "");
 //
             char comma[2];
             strcpy(comma, ",");
-            
-            // Build the substring array
+
             char str[25][25],temp[25];
             int loc = 0;
             int n = strlen(line);
@@ -188,7 +185,7 @@ void doFirstProcess(struct Node * root)
                         strcat(substring, cpy);
                     }
 
-                    // If the commonwords Ternary Search Tree contains this substring, add it to our substring char array
+
                     if(searchTST(root, substring)){
                         strcpy(str[loc], substring);
                         loc++;
@@ -201,7 +198,7 @@ void doFirstProcess(struct Node * root)
             }
 
 
-            // Sort the substring char array alphabetically
+            // Sort the char array alphabetically
             int start,mid;
 
             for(start=0;start<=loc;start++){
@@ -224,8 +221,7 @@ void doFirstProcess(struct Node * root)
                 }
             }
             reduced[strlen(reduced)-1] = 0;
-            
-            // Clear the array from memory for re-use
+
             for(start=0;start<=loc;start++){
                 strcpy(str[start], "");
             }
@@ -259,7 +255,7 @@ void doSecondProcess(struct Node * root)
     pthread_mutex_lock(&lock);
 
 
-    static const char writeFile[] = "matches.txt";
+    static const char writeFile[] = "C:\\Users\\DanLa\\CLionProjects\\untitled1\\matches.txt";
 
     FILE * matchFile = fopen(writeFile,"a+");
     if ( matchFile == NULL )
@@ -268,7 +264,7 @@ void doSecondProcess(struct Node * root)
 
 
 
-    static const char allwordsFileName[] = "allwords.txt";
+    static const char allwordsFileName[] = "C:\\Users\\DanLa\\CLionProjects\\untitled1\\allwords.txt";
     FILE *allwordsFile = fopen ( allwordsFileName, "r" );
     int startLine = 0;
     if ( allwordsFile != NULL )
@@ -374,7 +370,7 @@ int main(){
     // Build the shared Ternary Search Tree
     struct Node *root = NULL;
 
-    static const char filename[] = "commonwords.txt";
+    static const char filename[] = "C:\\Users\\DanLa\\CLionProjects\\untitled1\\commonwords.txt";
     FILE *file = fopen ( filename, "r" );
     if ( file != NULL )
     {
@@ -416,6 +412,7 @@ int main(){
 
     return 0;
 }
+
 
 
 
