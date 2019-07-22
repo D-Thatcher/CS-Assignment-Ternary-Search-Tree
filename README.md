@@ -6,4 +6,4 @@ Multithreading with a Ternary Search Tree
 
 - Update the paths of your allwords.txt and commonwords.txt
 - Find the output path of the matches.txt file and update it to your preferred destination of the output file
-- Make your own MAKEFILE, or update the one included in this project to the proper directory of your multi.c file
+- Create your own make file, or update the one included in this project to the proper directory of your multi.c file
