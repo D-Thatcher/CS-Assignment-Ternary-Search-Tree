@@ -1,4 +1,3 @@
-# Delta Controls
 Multithreading with a Ternary Search Tree
 
 
